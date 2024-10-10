@@ -23,7 +23,7 @@
       echo "<p>O numero anterior é: $anterior</p>";
       echo "<p>O numero sucessor é: $sucessor</p>";
    ?>
-    <p><a href="index.html">Voltar</a></p>
+    <p><a href="index.html">&#x2B05; Voltar</a></p>
   </main>
 
 </body>

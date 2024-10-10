@@ -15,14 +15,14 @@
 
   <main>
     <?php
-      $num = rand(0, 100);
+      $num = mt_rand(0, 100);
       echo "Gerando um número aleatório entre 0 e 100";
 
       echo "<p>O número gerado foi: <strong>$num</strong></p>"; 
-    
+    // rand_int é uma função para gerar números aleatórios griptografados, por isso ela é mais lenta de todas. Contudo é mais segura.
 
     ?>
-    <button onclick="history.go(0)">Gerar outro</button>
+    <button onclick="history.go(0)">&#x1f504; Gerar outro</button>
 
 
   </main>
