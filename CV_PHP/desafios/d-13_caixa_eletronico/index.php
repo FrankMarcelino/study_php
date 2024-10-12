@@ -4,47 +4,50 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="style.css">
   <title>caixa eletronico</title>
+  <style>
+  img.nota {
+    height: 50px;
+
+  }
+  </style>
 </head>
 
 <body>
+  <?php
+
+    $valor = $_GET["valor"] ?? 0;
+    $resto = $valor;
+
+    $tot100 = floor($resto / 100);
+    $resto = $resto % 100;
+    $tot50 = floor($resto / 50);
+    $resto = $resto % 50;
+    $tot20 = floor($resto / 20);
+    $resto = $resto % 20;
+    $tot5 = floor($resto / 5);
+  ?>
   <main>
-    <h1>caixa eletronico</h1>
+    <h1>Caixa eletronico</h1>
     <form action="<?php echo $_SERVER["PHP_SELF"]; ?>" method="get">
-      <label for="valor">Valor:</label>
-      <input type="number" name="valor" id="valor">
+      <label for="valor">Qual valor deseja sacar?(R$)<sup>*</sup></label>
+      <input type="number" name="valor" id="valor" step="5" required value="<?php echo $_GET["valor"] ?? 0 ?>">
+      <p style="font-size: 0.7em;"><sup>*</sup>Notas disponiveis: R$100, R$50, R$20 e R$5 </p>
       <input type="submit" value="Sacar">
     </form>
-
-    <?php
-    $valor = $_GET["valor"] ?? 0;
-    $nota100 = $valor / 100;
-    $resto = $valor % 100;
-    $nota50 = $resto / 50;
-    $resto = $resto % 50;
-    $nota20 = $resto / 20;
-    $resto = $resto % 20;
-    $nota10 = $resto / 10;
-    $resto = $resto % 10;
-    $nota5 = $resto / 5;
-    $resto = $resto % 5;
-    $nota2 = $resto / 2;
-    $resto = $resto % 2;
-    $nota1 = $resto / 1;
-    $resto = $resto % 1;
-    ?>
-    <p>
-      <?php
-      echo "Notas de 100: $nota100 <br>";
-      echo "Notas de 50: $nota50 <br>";
-      echo "Notas de 20: $nota20 <br>";
-      echo "Notas de 10: $nota10 <br>";
-      echo "Notas de 5: $nota5 <br>";
-      echo "Notas de 2: $nota2 <br>";
-      echo "Notas de 1: $nota1 <br>";
-      ?>
-    </p>
   </main>
+  <section>
+    <h2>Saque de R$[<?= $valor ?>] realizado</h2>
+    <p>Recolha o seu dinheiro</p>
+    <ul>
+      <li><img class="nota" src="img/100-reais.jpg" alt="nota de 100"> x<?= $tot100 ?></li>
+      </li>
+      <li><img class="nota" src="img/50-reais.jpg" alt="nota de 50"> x<?= $tot50 ?></li>
+      <li><img class="nota" src="img/20-reais.jpg" alt="nota de 20"> x<?= $tot20 ?></li>
+      <li><img class="nota" src="img/5-reais.jpg" alt="nota de 5"> x<?= $tot5 ?></li>
+    </ul>
+  </section>
 </body>
 
 </html>
